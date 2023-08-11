@@ -5,7 +5,7 @@ rule star_index_genome_1:
     input:
         fasta=f"{GENOME_DIR_1}/{GENOME_PARENT_1}.fa",
     output:
-        directory(f"{GENOME_DIR_1}"),
+        directory(f"{GENOME_DIR_1}/star_genome"),
     message:
         "Testing STAR index"
     threads: 1
@@ -21,7 +21,7 @@ rule star_index_genome_2:
     input:
         fasta=f"{GENOME_DIR_2}/{GENOME_PARENT_2}.fa",
     output:
-        directory(f"{GENOME_DIR_2}"),
+        directory(f"{GENOME_DIR_2}/star_genome"),
     message:
         "Testing STAR index"
     threads: 1
@@ -42,19 +42,18 @@ rule star_pe_multi_1:
         # paired end reads needs to be ordered so each item in the two lists match
         fq2=f"test/{{sample}}_R2.fastq.gz",  #optional
         # path to STAR reference genome index
-        idx=f"{GENOME_DIR_1}",
+        idx=f"{GENOME_DIR_1}/star_genome",
     output:
         # see STAR manual for additional output files
         aln=f"{OUTPUT_DIR}/star/{{sample}}/1_pe_aligned.bam",
         log=f"{OUTPUT_DIR}/star/{{sample}}/1_Log.out",
         sj=f"{OUTPUT_DIR}/star/{{sample}}/1_SJ.out.tab",
-        unmapped=f"{OUTPUT_DIR}/star/{{sample}}/1_unmapped.fastq.gz",
     log:
         "logs/pe/{sample}.log",
     params:
         # optional parameters
-        extra=f"--outSAMtype BAM SortedByCoordinate --outFileNamePrefix {OUTPUT_DIR}/star/{{sample}}/1_",
-    threads: 8
+        extra=f"--outSAMtype BAM SortedByCoordinate",
+    threads: 1
     wrapper:
         "v2.3.0/bio/star/align"
 
@@ -65,18 +64,17 @@ rule star_pe_multi_2:
         # paired end reads needs to be ordered so each item in the two lists match
         fq2=f"test/{{sample}}_R2.fastq.gz",  #optional
         # path to STAR reference genome index
-        idx=f"{GENOME_DIR_2}",
+        idx=f"{GENOME_DIR_2}/star_genome",
     output:
         # see STAR manual for additional output files
         aln=f"{OUTPUT_DIR}/star/{{sample}}/2_pe_aligned.bam",
         log=f"{OUTPUT_DIR}/star/{{sample}}/2_Log.out",
         sj=f"{OUTPUT_DIR}/star/{{sample}}/2_SJ.out.tab",
-        unmapped=f"{OUTPUT_DIR}/star/{{sample}}/2_unmapped.fastq.gz",
     log:
         "logs/pe/{sample}.log",
     params:
         # optional parameters
-        extra=f"--outSAMtype BAM SortedByCoordinate --outFileNamePrefix {OUTPUT_DIR}/star/{{sample}}/1_",
-    threads: 8
+        extra=f"--outSAMtype BAM SortedByCoordinate",
+    threads: 1
     wrapper:
         "v2.3.0/bio/star/align"
