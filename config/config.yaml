@@ -18,6 +18,7 @@ RAW_DATA: test
 
 RUN_FASTQC: True
 RUN_STAR: True
+RUN_EAGLE: True
 
 
 ###############################################################################

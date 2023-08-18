@@ -45,3 +45,4 @@ rule all:
 include: "rules/input_functions.smk"
 include: "rules/quality_check.smk"
 include: "rules/alignment.smk"
+include: "rules/read_sorting.smk"

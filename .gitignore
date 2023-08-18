@@ -4,3 +4,5 @@ logs/**
 .snakemake
 .snakemake/**
 test/**
+.eagle/**
+.eagle-build/**

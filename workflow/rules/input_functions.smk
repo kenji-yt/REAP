@@ -25,6 +25,13 @@ def multiqc_input(wildcards):
                         sample=samples.name.values.tolist(),
                     )
                 )
+    if config["RUN_EAGLE"]:
+        input.extend(
+            expand(
+                f"{OUTPUT_DIR}/read_sorting/{{sample}}/{{sample}}_classified{{one_or_two}}.ref.bam",
+                sample=samples.name.values.tolist(),one_or_two=['1','2'],
+            )
+        )
 
     return input
 
