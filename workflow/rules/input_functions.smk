@@ -4,7 +4,6 @@
 def multiqc_input(wildcards):
 
     input = []
-
     if config["RUN_FASTQC"]:
         input.extend(
             expand(
