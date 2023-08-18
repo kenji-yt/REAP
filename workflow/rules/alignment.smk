@@ -38,9 +38,9 @@ rule star_index_genome_2:
 
 rule star_pe_multi_1:
     input:
-        fq1=f"test/{{sample}}_R1.fastq.gz",
+        fq1=f"{RAW_DATA_DIR}/{{sample}}_R1.fastq.gz",
         # paired end reads needs to be ordered so each item in the two lists match
-        fq2=f"test/{{sample}}_R2.fastq.gz",  #optional
+        fq2=f"{RAW_DATA_DIR}/{{sample}}_R2.fastq.gz",  #optional
         # path to STAR reference genome index
         idx=f"{GENOME_DIR_1}",
     output:
@@ -61,9 +61,9 @@ rule star_pe_multi_1:
 
 rule star_pe_multi_2:
     input:
-        fq1=f"test/{{sample}}_R1.fastq.gz",
+        fq1=f"{RAW_DATA_DIR}/{{sample}}_R1.fastq.gz",
         # paired end reads needs to be ordered so each item in the two lists match
-        fq2=f"test/{{sample}}_R2.fastq.gz",  #optional
+        fq2=f"{RAW_DATA_DIR}/{{sample}}_R2.fastq.gz",  #optional
         # path to STAR reference genome index
         idx=f"{GENOME_DIR_2}",
     output:
