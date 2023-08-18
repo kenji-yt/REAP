@@ -1,6 +1,7 @@
 #### Indexing reference rule ####
 
-# Index genome 1 
+
+# Index genome 1
 rule star_index_genome_1:
     input:
         fasta=f"{GENOME_DIR_1}/{GENOME_PARENT_1}.fa",
@@ -16,7 +17,8 @@ rule star_index_genome_1:
     wrapper:
         "v2.3.0/bio/star/index"
 
-# Index genome 2 
+
+# Index genome 2
 rule star_index_genome_2:
     input:
         fasta=f"{GENOME_DIR_2}/{GENOME_PARENT_2}.fa",
@@ -33,8 +35,8 @@ rule star_index_genome_2:
         "v2.3.0/bio/star/index"
 
 
-
 #### Alignment rule ####
+
 
 rule star_pe_multi_1:
     input:
