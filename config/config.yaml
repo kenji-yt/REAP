@@ -2,15 +2,15 @@
 ###############                GENERAL PARAMETERS               ###############
 ###############################################################################
 
-OUTPUT: output/
-METADATA: test/metadata.txt
+OUTPUT: results/
+METADATA: .test/data/metadata.txt
 
 ###############################################################################
 ###############                     RAW DATA                    ###############
 ###############################################################################
 
 # Path to folder containing gzipped raw fastq data
-RAW_DATA: test
+RAW_DATA: .test/data
 
 ###############################################################################
 ###############                CONDITIONAL RULES                ###############
@@ -26,8 +26,8 @@ RUN_STAR: True
 
 # Paths to the folder of the parental genome assemblies
 
-GENOME_DIR_1: test/genome1/
-GENOME_DIR_2: test/genome2/
+GENOME_DIR_1: .test/data/genome1/
+GENOME_DIR_2: .test/data/genome2/
 
-GENOME_PARENT_1: Ahal_ref.fa
-GENOME_PARENT_2: Alyr_ref.fa
+GENOME_PARENT_1: g1.fa
+GENOME_PARENT_2: g2.fa
