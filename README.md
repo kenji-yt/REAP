@@ -1,5 +1,5 @@
 # REAP
-### <u>R</u>eproducible <u>E</u>xpression <u>A</u>nalysis for <u>P</u>olyploids
+### <ins>R</ins>eproducible <ins>E</ins>xpression <ins>A</ins>nalysis for <ins>P</ins>olyploids
 
 REAP is an allopolyploid specific snakemake workflow for the analysis of RNAseq data. The workflow includes all basic steps in RNAseq data analysis (quality check and alignment), a read sorting tool specific for allopolyploids, differential expression analysis and a set of downstream analyses.
 
