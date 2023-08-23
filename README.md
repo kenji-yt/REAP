@@ -16,7 +16,7 @@ git clone https://github.com/kenji-yt/REAP
 ### 1.Set up
 First, edit or create a `metadata.txt` file contain information about you samples. The format is detailed [here](https://github.com/supermaxiste/ARPEGGIO/wiki/Input-files). For an example, see `REAP/example/metadata.txt`.
 
-Next, you need to edit the config.yaml file to configure your REAP analysis. This file can be found in the REAP directory.
+Next, you need to edit the `config.yaml` file to configure your REAP analysis. This file can be found in the REAP directory.
 In the config file you can specify where the output should be written, where metadata, raw data and supporting data can be found, and which steps you want the workflow to perform. A detailed tutorial can be found [here](https://github.com/supermaxiste/ARPEGGIO/wiki). 
 
 ### 2.Run
