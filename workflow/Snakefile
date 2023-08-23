@@ -14,7 +14,6 @@ if len(config) == 0:
 
         configfile: "config/config.yaml"
 
-
     else:
         sys.exit(
             f"Make sure there is a config.yaml file in {os.getcwd()} or specify one with the --configfile commandline parameter."
@@ -28,19 +27,22 @@ samples = pd.read_csv(config["METADATA"], sep="\t")
 
 ## Parse config file
 
-RAW_DATA_DIR = os.path.normpath(config["RAW_DATA"]) 
+RAW_DATA_DIR = os.path.normpath(config["RAW_DATA"])
 OUTPUT_DIR = os.path.normpath(config["OUTPUT"])
 GENOME_DIR_1 = os.path.normpath(config["GENOME_DIR_1"])
 GENOME_DIR_2 = os.path.normpath(config["GENOME_DIR_2"])
 GENOME_PARENT_1 = os.path.splitext(config["GENOME_PARENT_1"])[0]
 GENOME_PARENT_2 = os.path.splitext(config["GENOME_PARENT_2"])[0]
 
+
 ## Run all analyses
 rule all:
     input:
-        f"{OUTPUT_DIR}/MultiQC/multiqc_report.html"
+        f"{OUTPUT_DIR}/MultiQC/multiqc_report.html",
+
 
 ######################### Main rules of REAP #############################
+
 
 include: "rules/input_functions.smk"
 include: "rules/quality_check.smk"

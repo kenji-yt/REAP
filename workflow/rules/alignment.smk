@@ -1,6 +1,7 @@
 #### Indexing reference rule ####
 
-# Index genome 1 
+
+# Index genome 1
 rule star_index_genome_1:
     input:
         fasta=f"{GENOME_DIR_1}/{GENOME_PARENT_1}.fa",
@@ -16,7 +17,8 @@ rule star_index_genome_1:
     wrapper:
         "v2.3.0/bio/star/index"
 
-# Index genome 2 
+
+# Index genome 2
 rule star_index_genome_2:
     input:
         fasta=f"{GENOME_DIR_2}/{GENOME_PARENT_2}.fa",
@@ -33,14 +35,14 @@ rule star_index_genome_2:
         "v2.3.0/bio/star/index"
 
 
-
 #### Alignment rule ####
+
 
 rule star_pe_multi_1:
     input:
-        fq1=f"test/{{sample}}_R1.fastq.gz",
+        fq1=f"{RAW_DATA_DIR}/{{sample}}_R1.fastq.gz",
         # paired end reads needs to be ordered so each item in the two lists match
-        fq2=f"test/{{sample}}_R2.fastq.gz",  #optional
+        fq2=f"{RAW_DATA_DIR}/{{sample}}_R2.fastq.gz",  #optional
         # path to STAR reference genome index
         idx=f"{GENOME_DIR_1}/star_genome",
     output:
@@ -60,9 +62,9 @@ rule star_pe_multi_1:
 
 rule star_pe_multi_2:
     input:
-        fq1=f"test/{{sample}}_R1.fastq.gz",
+        fq1=f"{RAW_DATA_DIR}/{{sample}}_R1.fastq.gz",
         # paired end reads needs to be ordered so each item in the two lists match
-        fq2=f"test/{{sample}}_R2.fastq.gz",  #optional
+        fq2=f"{RAW_DATA_DIR}/{{sample}}_R2.fastq.gz",  #optional
         # path to STAR reference genome index
         idx=f"{GENOME_DIR_2}/star_genome",
     output:
