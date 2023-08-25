@@ -35,10 +35,6 @@ GENOME_PARENT_1 = os.path.splitext(config["GENOME_PARENT_1"])[0]
 GENOME_PARENT_2 = os.path.splitext(config["GENOME_PARENT_2"])[0]
 
 
-envvars:
-    "CONDA_PREFIX",
-
-
 ## Run all analyses
 rule all:
     input:
