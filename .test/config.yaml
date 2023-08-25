@@ -12,6 +12,10 @@ METADATA: data/metadata.txt
 # Path to folder containing gzipped raw fastq data
 RAW_DATA: data
 
+# Is the data Paired End
+PAIRED_END: True
+
+
 ###############################################################################
 ###############                CONDITIONAL RULES                ###############
 ###############################################################################
@@ -31,3 +35,12 @@ GENOME_DIR_2: data/genome2/
 
 GENOME_PARENT_1: g1.fa
 GENOME_PARENT_2: g2.fa
+
+
+###############################################################################
+##############                 DOWNSTREAM ANALYSES               ##############
+###############################################################################
+
+# Path to annotation files
+ANNOTATION_PARENT_1: data/genome1/anno1.gtf
+ANNOTATION_PARENT_2: data/genome2/anno2.gtf
