@@ -128,7 +128,7 @@ rule install_eagle:
     conda:
         ENV_PATH
     shell:
-        "{params.eagle_mk_env} make -C {params.eagle_dir_path} install {params.eagle_mk_flags}"
+        "{params.eagle_mk_env} make -C {params.eagle_dir_path} install {params.eagle_mk_flags} 2> {log}"
 
 
 rule read_sorting_pe:
