@@ -2,6 +2,7 @@
 ## featureCounts rule ##
 ########################
 
+
 # PARENT 1
 rule feature_counts_p1:
     input:
@@ -9,7 +10,8 @@ rule feature_counts_p1:
         samples=f"{OUTPUT_DIR}/read_sorting/{{sample}}/{{sample}}_classified1.ref.bam",
         annotation=f"{ANNOTATION_PARENT_2}",
     output:
-        multiext(f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_1",
+        multiext(
+            f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_1",
             ".featureCounts",
             ".featureCounts.summary",
             ".featureCounts.jcounts",
@@ -30,7 +32,8 @@ rule feature_counts_p2:
         samples=f"{OUTPUT_DIR}/read_sorting/{{sample}}/{{sample}}_classified2.ref.bam",
         annotation=f"{ANNOTATION_PARENT_2}",
     output:
-        multiext(f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_2",
+        multiext(
+            f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_2",
             ".featureCounts",
             ".featureCounts.summary",
             ".featureCounts.jcounts",

@@ -30,15 +30,12 @@ def multiqc_input(wildcards):
 
     return input
 
+
 # Special parameters for Feature Count
 def feature_count_params(wildcards):
     input = []
     if config["PAIRED_END"]:
-        input.extend(
-            "--primary -p"
-        )
+        input.extend("--primary -p")
     else:
-        input.extend(
-            "--primary"
-        )
+        input.extend("--primary")
     return input
