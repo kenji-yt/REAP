@@ -130,6 +130,7 @@ rule install_eagle:
     shell:
         "{params.eagle_mk_env} make -C {params.eagle_dir_path} install {params.eagle_mk_flags}"
 
+
 rule read_sorting_pe:
     input:
         eagle_bin=EAGLE,
@@ -140,6 +141,8 @@ rule read_sorting_pe:
         o2=f"{OUTPUT_DIR}/read_sorting/{{sample}}/{{sample}}_classified2.ref.bam",
     log:
         f"logs/read_sorting_{{sample}}_PE.log",
+    conda:
+        ENV_PATH
     params:
         list=f"{OUTPUT_DIR}/read_sorting/{{sample}}/{{sample}}_classified_reads.list",
         genome1=f"{GENOME_DIR_1}/{GENOME_PARENT_1}.fa",
