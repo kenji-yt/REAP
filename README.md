@@ -1,21 +1,36 @@
-# Snakemake workflow: `REAP`
+# REAP
+### <ins>R</ins>eproducible <ins>E</ins>xpression <ins>A</ins>nalysis for <ins>P</ins>olyploids
 
-[![Snakemake](https://img.shields.io/badge/snakemake-≥6.3.0-brightgreen.svg)](https://snakemake.github.io)
-[![GitHub actions status](https://github.com/<owner>/<repo>/workflows/Tests/badge.svg?branch=main)](https://github.com/<owner>/<repo>/actions?query=branch%3Amain+workflow%3ATests)
+REAP is an allopolyploid specific snakemake workflow for the analysis of RNAseq data. The workflow includes all basic steps in RNAseq data analysis (quality check and alignment), a read sorting tool specific for allopolyploids, differential expression analysis and a set of downstream analyses.
 
+## Installation
 
-A Snakemake workflow for `<description>`
+To install this workflow you first need to [install Snakemake via Conda](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html). Next, run the following commands to clone the ARPEGGIO repository to your computer :
 
+```
+git clone https://github.com/kenji-yt/REAP
+```
 
-## Usage
+## Using REAP
 
-The usage of this workflow is described in the [Snakemake Workflow Catalog](https://snakemake.github.io/snakemake-workflow-catalog/?usage=<owner>%2F<repo>).
+### 1. Set up
+First, edit or create a `metadata.txt` file contain information about you samples. The format is detailed [here](https://github.com/supermaxiste/ARPEGGIO/wiki/Input-files). For an example, see `REAP/example/metadata.txt`.
 
-If you use this workflow in a paper, don't forget to give credits to the authors by citing the URL of this (original) <repo>sitory and its DOI (see above).
+Next, you need to edit the `config.yaml` file to configure your REAP analysis. This file can be found in the REAP directory.
+In the config file you can specify where the output should be written, where metadata, raw data and supporting data can be found, and which steps you want the workflow to perform. A detailed tutorial can be found [here](https://github.com/supermaxiste/ARPEGGIO/wiki). 
 
-# TODO
+### 2. Run
 
-* Replace `<owner>` and `<repo>` everywhere in the template (also under .github/workflows) with the correct `<repo>` name and owning user or organization.
-* Replace `<name>` with the workflow name (can be the same as `<repo>`).
-* Replace `<description>` with a description of what the workflow does.
-* The workflow will occur in the snakemake-workflow-catalog once it has been made public. Then the link under "Usage" will point to the usage instructions if `<owner>` and `<repo>` were correctly set.
+To run the workflow, simply enter the REAP directory and run the following commands:
+
+```
+snakemake --use-conda -cores N 
+```
+
+Make sure to replace N with the number of cores you wish to allocate to snakemake. 
+
+## Contribute
+If you would like to contribute, prompt chat-gpt with: "How to contribute to a public repository" 
+
+## Help
+Feel free to open an issue if you have found no solution to your problem anywhere. 
