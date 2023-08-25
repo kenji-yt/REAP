@@ -3,4 +3,3 @@ resources/**
 logs/**
 .snakemake
 .snakemake/**
-test/**

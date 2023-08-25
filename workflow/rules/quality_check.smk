@@ -32,9 +32,9 @@ rule fastqc:
 rule qualimap_1:
     input:
         # BAM aligned, splicing-aware, to reference genome
-        aln=f"{OUTPUT_DIR}/star/{{sample}}/1_pe_aligned.bam",
+        bam=f"{OUTPUT_DIR}/star/{{sample}}/1_pe_aligned.bam",
     output:
-        out=f"{OUTPUT_DIR}/qualimap/{{sample}}/aligned_1",
+        directory(f"{OUTPUT_DIR}/qualimap/{{sample}}/aligned_1"),
     log:
         f"logs/qualimap/{{sample}}/1_pe_aligned.log",
     # optional specification of memory usage of the JVM that snakemake will respect with global
@@ -44,15 +44,15 @@ rule qualimap_1:
     resources:
         mem_mb=4096,
     wrapper:
-        "v2.3.0/bio/qualimap/bamqc"
+        "v2.3.2/bio/qualimap/bamqc"
 
 
 rule qualimap_2:
     input:
         # BAM aligned, splicing-aware, to reference genome
-        aln=f"{OUTPUT_DIR}/star/{{sample}}/2_pe_aligned.bam",
+        bam=f"{OUTPUT_DIR}/star/{{sample}}/2_pe_aligned.bam",
     output:
-        out=f"{OUTPUT_DIR}/qualimap/{{sample}}/aligned_2",
+        directory(f"{OUTPUT_DIR}/qualimap/{{sample}}/aligned_2"),
     log:
         f"logs/qualimap/{{sample}}/2_pe_aligned.log",
     # optional specification of memory usage of the JVM that snakemake will respect with global
@@ -62,7 +62,7 @@ rule qualimap_2:
     resources:
         mem_mb=4096,
     wrapper:
-        "v2.3.0/bio/qualimap/bamqc"
+        "v2.3.2/bio/qualimap/bamqc"
 
 
 ###################

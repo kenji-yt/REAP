@@ -26,6 +26,7 @@ RUN_STAR: True
 
 # Paths to the folder of the parental genome assemblies
 
+
 GENOME_DIR_1: .test/data/genome1/
 GENOME_DIR_2: .test/data/genome2/
 
