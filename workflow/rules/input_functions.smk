@@ -36,6 +36,8 @@ def feature_count_params(wildcards):
     input = []
     if config["PAIRED_END"]:
         input.extend("--primary -p")
+        input.extend(config["EXTRA_PARAMS"])
     else:
         input.extend("--primary")
+        input.extend(config["EXTRA_PARAMS"])
     return input
