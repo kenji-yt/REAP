@@ -14,7 +14,7 @@ rule feature_counts_p1:
         summary=f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_1.featureCounts.summary",
     threads: 1
     params:
-        extra="--primary -p",
+        extra="-t exon -g gene_id -p",
     log:
         "logs/featureCounts_{sample}_subgenome_1.log",
     wrapper:
@@ -32,7 +32,7 @@ rule feature_counts_p2:
         summary=f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_2.featureCounts.summary",
     threads: 1
     params:
-        extra="--primary -p",
+        extra="-t exon -g gene_id -p",
     log:
         "logs/featureCounts_{sample}_subgenome_2.log",
     wrapper:
