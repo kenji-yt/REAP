@@ -28,8 +28,8 @@ EAGLE_BIN_INSTALL_PATH = os.path.join(INSTALL_PREFIX, "bin", "eagle-rc")
 # For whatever reason conda's gcc ignores LIBRARY_PATH
 # so we must try and override make's LDFLAGS
 # eagle decided to use the non standard name LFLAGS
-INCLUDES = os.path.join("${CONDA_PREFIX}", "include")
-LIBS = os.path.join("${CONDA_PREFIX}", "lib")
+INCLUDES = os.path.join("$CONDA_PREFIX", "include")
+LIBS = os.path.join("$CONDA_PREFIX", "lib")
 GCC_PREFIX = "x86_64-conda_cos6-linux-gnu-"
 CC = f"{GCC_PREFIX}cc"
 AR = f"{GCC_PREFIX}ar"
