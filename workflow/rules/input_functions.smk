@@ -40,4 +40,4 @@ def feature_count_params(wildcards):
     else:
         input.extend("--primary")
         input.extend(config["EXTRA_PARAMS"])
-    return input
+    return " ".join(input) 
