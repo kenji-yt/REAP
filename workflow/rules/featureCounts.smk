@@ -8,19 +8,15 @@ rule feature_counts_p1:
     input:
         # list of sam or bam files
         samples=f"{OUTPUT_DIR}/read_sorting/{{sample}}/{{sample}}_classified1.ref.bam",
-        annotation=f"{ANNOTATION_PARENT_2}",
+        annotation=f"{ANNOTATION_PARENT_1}",
     output:
-        multiext(
-            f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_1",
-            ".featureCounts",
-            ".featureCounts.summary",
-            ".featureCounts.jcounts",
-        ),
+        count_table=f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_1.featureCounts",
+        summary=f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_1.featureCounts.summary",
     threads: 1
     params:
-        extra=feature_count_params,
+        extra="--primary -p",
     log:
-        "logs/read_sorting_{{sample}}_subgenome_2.log",
+        "logs/featureCounts_{sample}_subgenome_1.log",
     wrapper:
         "v2.6.0/bio/subread/featurecounts"
 
@@ -32,16 +28,12 @@ rule feature_counts_p2:
         samples=f"{OUTPUT_DIR}/read_sorting/{{sample}}/{{sample}}_classified2.ref.bam",
         annotation=f"{ANNOTATION_PARENT_2}",
     output:
-        multiext(
-            f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_2",
-            ".featureCounts",
-            ".featureCounts.summary",
-            ".featureCounts.jcounts",
-        ),
+        count_table=f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_2.featureCounts",
+        summary=f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_2.featureCounts.summary",
     threads: 1
     params:
-        extra=feature_count_params,
+        extra="--primary -p",
     log:
-        "logs/read_sorting_{{sample}}_subgenome_2.log",
+        "logs/featureCounts_{sample}_subgenome_2.log",
     wrapper:
         "v2.6.0/bio/subread/featurecounts"
