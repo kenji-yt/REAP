@@ -12,6 +12,10 @@ METADATA: .test/data/metadata.txt
 # Path to folder containing gzipped raw fastq data
 RAW_DATA: .test/data
 
+# Is the data Paired End
+PAIRED_END: True
+
+
 ###############################################################################
 ###############                CONDITIONAL RULES                ###############
 ###############################################################################
@@ -19,6 +23,7 @@ RAW_DATA: .test/data
 RUN_FASTQC: True
 RUN_STAR: True
 RUN_EAGLE: True
+RUN_FEATURECOUNTS: True
 
 
 ###############################################################################
@@ -33,3 +38,19 @@ GENOME_DIR_2: .test/data/genome2/
 
 GENOME_PARENT_1: g1.fa
 GENOME_PARENT_2: g2.fa
+
+
+###############################################################################
+##############                 DOWNSTREAM ANALYSES               ##############
+###############################################################################
+
+# Path to annotation files
+ANNOTATION_PARENT_1: .test/data/genome1/anno1.gtf
+ANNOTATION_PARENT_2: .test/data/genome2/anno2.gtf
+
+#####################
+### featureCounts ###
+#####################
+
+# Desired parameters
+EXTRA_PARAMS: ""

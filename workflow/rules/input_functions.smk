@@ -14,15 +14,9 @@ def multiqc_input(wildcards):
     if config["RUN_STAR"]:
         input.extend(
             expand(
-                f"{OUTPUT_DIR}/qualimap/{{sample}}/aligned_1",
+                f"{OUTPUT_DIR}/qualimap/{{sample}}/aligned_{{one_or_two}}",
                 sample=samples.name.values.tolist(),
-            )
-        )
-
-        input.extend(
-            expand(
-                f"{OUTPUT_DIR}/qualimap/{{sample}}/aligned_2",
-                sample=samples.name.values.tolist(),
+                one_or_two=["1", "2"],
             )
         )
     if config["RUN_EAGLE"]:
@@ -33,5 +27,24 @@ def multiqc_input(wildcards):
                 one_or_two=["1", "2"],
             )
         )
+    if config["RUN_FEATURECOUNTS"]:
+        input.extend(
+            expand(
+                f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_{{one_or_two}}{{suffix}}",
+                sample=samples.name.values.tolist(),
+                one_or_two=["1", "2"],
+                suffix=[".featureCounts", ".featureCounts.summary"],
+            )
+        )
 
     return input
+# Special parameters for Feature Count
+# def feature_count_params(wildcards):
+#    input = []
+#    if config["PAIRED_END"]:
+#       input.extend("--primary --p")
+#      input.extend(config["EXTRA_PARAMS"])
+# else:
+#    input.extend("--primary")
+#   input.extend(config["EXTRA_PARAMS"])
+# return " ".join(input)
