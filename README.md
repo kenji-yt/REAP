@@ -1,3 +1,6 @@
+[![Snakemake](https://img.shields.io/badge/snakemake-≥6.3.0-brightgreen.svg)](https://snakemake.github.io)
+[![GitHub actions status](https://github.com/kenji-yt/REAP/workflows/Tests/badge.svg?branch=main)](https://github.com/kenji-yt/REAP/actions?query=branch%3Amain+workflow%3ATests)
+
 # REAP
 ### <ins>R</ins>eproducible <ins>E</ins>xpression <ins>A</ins>nalysis for <ins>P</ins>olyploids
 
