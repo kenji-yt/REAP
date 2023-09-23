@@ -43,7 +43,7 @@ rule qualimap_1:
     # https://snakemake.readthedocs.io/en/latest/executing/cluster.html#job-properties
     resources:
         mem_mb=4096,
-    threads:workflow.cores
+    threads: workflow.cores
     wrapper:
         "v2.3.2/bio/qualimap/bamqc"
 
@@ -62,7 +62,7 @@ rule qualimap_2:
     # https://snakemake.readthedocs.io/en/latest/executing/cluster.html#job-properties
     resources:
         mem_mb=4096,
-    threads:workflow.cores
+    threads: workflow.cores
     wrapper:
         "v2.3.2/bio/qualimap/bamqc"
 
