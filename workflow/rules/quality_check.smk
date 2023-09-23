@@ -15,7 +15,7 @@ rule fastqc:
         extra="--quiet",
     log:
         f"logs/fastqc/{{sample}}_{{extension}}.log",
-    threads: 1
+    threads: workflow.cores
     resources:
         mem_mb=1024,
     wrapper:
@@ -43,6 +43,7 @@ rule qualimap_1:
     # https://snakemake.readthedocs.io/en/latest/executing/cluster.html#job-properties
     resources:
         mem_mb=4096,
+    threads:workflow.cores
     wrapper:
         "v2.3.2/bio/qualimap/bamqc"
 
@@ -61,6 +62,7 @@ rule qualimap_2:
     # https://snakemake.readthedocs.io/en/latest/executing/cluster.html#job-properties
     resources:
         mem_mb=4096,
+    threads:workflow.cores
     wrapper:
         "v2.3.2/bio/qualimap/bamqc"
 

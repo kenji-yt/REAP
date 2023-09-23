@@ -9,7 +9,7 @@ rule star_index_genome_1:
         directory(f"{GENOME_DIR_1}/star_genome"),
     message:
         "Testing STAR index"
-    threads: 1
+    threads: workflow.cores
     params:
         extra="",
     log:
@@ -26,7 +26,7 @@ rule star_index_genome_2:
         directory(f"{GENOME_DIR_2}/star_genome"),
     message:
         "Testing STAR index"
-    threads: 1
+    threads: workflow.cores
     params:
         extra="",
     log:
@@ -55,7 +55,7 @@ rule star_pe_multi_1:
     params:
         # optional parameters
         extra=f"--outSAMtype BAM SortedByCoordinate",
-    threads: 1
+    threads: workflow.cores
     wrapper:
         "v2.3.0/bio/star/align"
 
@@ -77,6 +77,6 @@ rule star_pe_multi_2:
     params:
         # optional parameters
         extra=f"--outSAMtype BAM SortedByCoordinate",
-    threads: 1
+    threads: workflow.cores
     wrapper:
         "v2.3.0/bio/star/align"

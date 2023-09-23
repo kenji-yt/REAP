@@ -36,7 +36,6 @@ GENOME_PARENT_2 = os.path.splitext(config["GENOME_PARENT_2"])[0]
 ANNOTATION_PARENT_1 = os.path.splitext(config["ANNOTATION_PARENT_1"])[0]
 ANNOTATION_PARENT_2 = os.path.splitext(config["ANNOTATION_PARENT_2"])[0]
 
-
 ## Run all analyses
 rule all:
     input:

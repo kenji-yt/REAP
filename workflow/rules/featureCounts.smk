@@ -12,7 +12,7 @@ rule feature_counts_p1:
     output:
         count_table=f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_1.featureCounts",
         summary=f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_1.featureCounts.summary",
-    threads: 1
+    threads: workflow.cores
     params:
         extra="-t exon -g gene_id -p",
     log:
@@ -30,7 +30,7 @@ rule feature_counts_p2:
     output:
         count_table=f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_2.featureCounts",
         summary=f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_2.featureCounts.summary",
-    threads: 1
+    threads: workflow.cores
     params:
         extra="-t exon -g gene_id -p",
     log:
