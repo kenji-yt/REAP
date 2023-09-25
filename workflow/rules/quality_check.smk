@@ -15,6 +15,7 @@ rule fastqc:
         extra="--quiet",
     log:
         f"logs/fastqc/{{sample}}_{{extension}}.log",
+    threads:workflow.cores
     wrapper:
         "v2.3.0/bio/fastqc"
 
@@ -39,7 +40,7 @@ rule qualimap_1:
     # and which can be used to request RAM during cluster job submission as `{resources.mem_mb}`:
     # https://snakemake.readthedocs.io/en/latest/executing/cluster.html#job-properties
     params:
-        extra="-nt f"{workflow.cores}", 
+        extra=expand('-nt {cores}', cores=workflow.cores), 
     wrapper:
         "v2.3.2/bio/qualimap/bamqc"
 
@@ -57,7 +58,7 @@ rule qualimap_2:
     # and which can be used to request RAM during cluster job submission as `{resources.mem_mb}`:
     # https://snakemake.readthedocs.io/en/latest/executing/cluster.html#job-properties
     params:
-        extra="-nt f"{workflow.cores}", 
+        extra=expand('-nt {cores}', cores=workflow.cores), 
     wrapper:
         "v2.3.2/bio/qualimap/bamqc"
 
