@@ -41,6 +41,8 @@ rule qualimap_1:
     # resource restrictions (https://snakemake.readthedocs.io/en/latest/snakefiles/rules.html#resources)
     # and which can be used to request RAM during cluster job submission as `{resources.mem_mb}`:
     # https://snakemake.readthedocs.io/en/latest/executing/cluster.html#job-properties
+    params:
+        extra=f"-nt {workflow.cores}",
     wrapper:
         "v2.3.2/bio/qualimap/bamqc"
 
@@ -57,6 +59,8 @@ rule qualimap_2:
     # resource restrictions (https://snakemake.readthedocs.io/en/latest/snakefiles/rules.html#resources)
     # and which can be used to request RAM during cluster job submission as `{resources.mem_mb}`:
     # https://snakemake.readthedocs.io/en/latest/executing/cluster.html#job-properties
+    params:
+        extra=f"-nt {workflow.cores}",
     wrapper:
         "v2.3.2/bio/qualimap/bamqc"
 
