@@ -15,7 +15,7 @@ rule fastqc:
         extra="--quiet",
     log:
         f"logs/fastqc/{{sample}}_{{extension}}.log",
-    threads:workflow.cores
+    threads: workflow.cores
     wrapper:
         "v2.3.0/bio/fastqc"
 
