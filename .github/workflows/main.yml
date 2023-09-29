@@ -42,7 +42,7 @@ jobs:
       with:
         directory: .test
         snakefile: workflow/Snakefile
-        args: "--use-conda --show-failed-logs --cores 3 --configfile .test/config.yaml --resources mem_mb=4096"
+        args: "--use-conda --show-failed-logs --cores 2 --configfile .test/config.yaml --resources mem_mb=4096"
 
     - name: Test report
       uses: snakemake/snakemake-github-action@v1.25.1
