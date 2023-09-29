@@ -17,7 +17,7 @@ rule fastqc:
         f"logs/fastqc/{{sample}}_{{extension}}.log",
     threads: workflow.cores
     wrapper:
-        "v2.3.0/bio/fastqc"
+        "v2.6.0/bio/fastqc"
 
 
 ###################
