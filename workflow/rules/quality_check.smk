@@ -17,7 +17,7 @@ rule fastqc:
         f"logs/fastqc/{{sample}}_{{extension}}.log",
     threads: workflow.cores
     resources:
-        mem_mb=4096,
+        mem_mb=1024,
     wrapper:
         "v2.3.0/bio/fastqc"
 
