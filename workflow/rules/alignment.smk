@@ -51,7 +51,7 @@ rule star_pe_multi_1:
         log=f"{OUTPUT_DIR}/star/{{sample}}/1_Log.out",
         sj=f"{OUTPUT_DIR}/star/{{sample}}/1_SJ.out.tab",
     log:
-        "logs/pe/{sample}.log",
+        "logs/star/{sample}.log",
     params:
         # optional parameters
         extra=f"--outSAMtype BAM SortedByCoordinate",
@@ -73,7 +73,7 @@ rule star_pe_multi_2:
         log=f"{OUTPUT_DIR}/star/{{sample}}/2_Log.out",
         sj=f"{OUTPUT_DIR}/star/{{sample}}/2_SJ.out.tab",
     log:
-        "logs/pe/{sample}.log",
+        "logs/star/{sample}.log",
     params:
         # optional parameters
         extra=f"--outSAMtype BAM SortedByCoordinate",
