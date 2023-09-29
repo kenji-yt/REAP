@@ -8,7 +8,7 @@ REAP is an allopolyploid specific snakemake workflow for the analysis of RNAseq 
 
 ## Installation
 
-To install this workflow you first need to [install Snakemake via Conda](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html). Next, run the following commands to clone the ARPEGGIO repository to your computer :
+To install this workflow you first need to [install Snakemake via Conda](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html). Next, run the following commands to clone the REAP repository to your computer :
 
 ```
 git clone https://github.com/kenji-yt/REAP
