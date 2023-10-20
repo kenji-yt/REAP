@@ -1,9 +1,16 @@
-############ Differential Expression Analysis using EdgeR ############
+########################################################
+##### Differential Expression Analysis using EdgeR #####
+########################################################
 
+#-----------------------#
 ### Required packages ###
+#-----------------------#
 library(edgeR)
 
+#-----------------------#
 ### Get the arguments ###
+#-----------------------#
+
 comm_args <- commandArgs(trailingOnly = TRUE)
 
 # First argument: read count filenames
@@ -14,9 +21,12 @@ count_dir <- comm_args[2]
 min_cpm <- comm_args[3]
 # All other arguments
 Others <- comm_args[4:]
-### Analysis ###
 
-# Load the data
+#-------------------#
+### Load the data ### 
+#-------------------#
+
+# create paths 
 filenames_1 <- c() 
 filenames_2 <- c()
 groups <-c()
@@ -26,15 +36,46 @@ for(i in 1:nrow(metadata)){
     filenames_2 <- c(filenames_2,paste0(sample,"/",sample,"_subgenome_",2,".featureCounts"))
 }
 
+# read data into DGEList ojects
+sub_genome_1 <- readDGE(filenames_1, path=count_dir, columns=c(1,7), group=metadata$group, labels=metadata$name)
+sub_genome_2 <- readDGE(filenames_2, path=count_dir, columns=c(1,7), group=metadata$group, labels=metadata$name)
 
-sub_genome_1 <-readDGE(filenames_1, path=count_dir, columns=c(1,7), group=metadata$group, labels=metadata$name)
+#-----------------------------#
+### Filter out genes by cpm ### 
+#-----------------------------#
 
-# Create DGElist object
-d <- DGEList(counts=count_data,group=factor(groups))
-
-# Filter out genes by cpm
-keep <- rowSums(cpm(d)>min_cpm) == length(groups) # Requiring minimum cpm in all individuals.
-d <- d[keep,]
-
+# Requiring minimum cpm in all individuals.
+keep_1 <- rowSums(cpm(sub_genome_1)>min_cpm) == length(groups) 
+sub_genome_1 <- sub_genome_1[keep_1,]
 # Reset library size
-d$samples$lib.size <- colSums(d$counts)
+sub_genome_1$samples$lib.size <- colSums(sub_genome_1$counts)
+
+# Requiring minimum cpm in all individuals.
+keep_2 <- rowSums(cpm(sub_genome_2)>min_cpm) == length(groups) 
+sub_genome_2 <- sub_genome_2[keep_2,]
+# Reset library size
+sub_genome_2$samples$lib.size <- colSums(sub_genome_2$counts)
+
+
+#------------------#
+### DEG analysis ### 
+#------------------#
+
+# Compare expression between groups for subgenome 1 
+
+# Compare expression between groups for subgenome 2 
+
+# Compare expression of homeologs
+#   With:  -1 reference:
+#                       -ref/alt
+#          -2 reference:
+#                        -ref/alt genome 1
+#                        -ref/alt genome 2
+#                        -if also 2 annotations: RBH list
+#                        Three ways to have homeologs, choose manually or default to one getting most genes.
+
+# How to compare homeologs? 
+# Within a group between subgenomes. 
+# Between all combinations? So each group is group+subgenome. Does this make sense?
+# Between a group: Homeolog ratio test.
+
