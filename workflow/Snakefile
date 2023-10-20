@@ -35,7 +35,7 @@ GENOME_PARENT_1 = os.path.splitext(config["GENOME_PARENT_1"])[0]
 GENOME_PARENT_2 = os.path.splitext(config["GENOME_PARENT_2"])[0]
 ANNOTATION_PARENT_1 = os.path.splitext(config["ANNOTATION_PARENT_1"])[0]
 ANNOTATION_PARENT_2 = os.path.splitext(config["ANNOTATION_PARENT_2"])[0]
-
+MIN_COUNT = os.path.splitext(config["MIN_COUNT"])[0]
 
 ## Run all analyses
 rule all:
