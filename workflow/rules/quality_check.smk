@@ -78,17 +78,16 @@ rule qualimap_2:
 
 rule multiqc_dir:
     input:
-        multiqc_input,
+        input_files=multiqc_input,
     output:
         out=f"{OUTPUT_DIR}/MultiQC/multiqc_report.html",
     params:
-        extra="",  # Optional: extra parameters for multiqc.
-        output_dir=os.path.dirname(output[0])
-        output_file_name=os.path.basename(output[0]),
+        extra="",  # Optional: extra parameters for multiqc. 
+        output_dir=lambda w, output: os.path.dirname(output.out[0]),
+        output_file_name=lambda w, output: os.path.basename(output.out[0]),
     log:
         "logs/multiqc.log",
     conda:
-    "multi_qc.yaml"
+        "multi_qc.yaml"
     shell:
-        "multiqc {params.extra} --force -o {params.output_dir} -n {params.output_file_name} "
-    "{input.multiqc_inpu} &> {log}"
+        "multiqc {params.extra} --force -o {params.output_dir} -n {params.output_file_name} {input.input_files} &> {log}"
