@@ -83,7 +83,12 @@ rule multiqc_dir:
         out=f"{OUTPUT_DIR}/MultiQC/multiqc_report.html",
     params:
         extra="",  # Optional: extra parameters for multiqc.
+        output_dir=os.path.dirname(output[0])
+        output_file_name=os.path.basename(output[0]),
     log:
         "logs/multiqc.log",
-    wrapper:
-        "v2.3.0/bio/multiqc"
+    conda:
+    "multi_qc.yaml"
+    shell:
+        "multiqc {params.extra} --force -o {params.output_dir} -n {params.output_file_name} "
+    "{input.multiqc_inpu} &> {log}"
