@@ -30,7 +30,7 @@ To run the workflow, simply enter the REAP directory and run the following comma
 snakemake --use-conda -cores N 
 ```
 
-Make sure to replace N with the number of cores you wish to allocate to snakemake. 
+Make sure to be in the conda directory with snakemake intalled and to replace N with the number of cores you wish to allocate to snakemake. 
 
 ## Contribute
 If you would like to contribute, prompt chat-gpt with: "How to contribute to a public repository" 
