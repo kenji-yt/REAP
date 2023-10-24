@@ -36,4 +36,4 @@ Make sure to replace N with the number of cores you wish to allocate to snakemak
 If you would like to contribute, prompt chat-gpt with: "How to contribute to a public repository" 
 
 ## Help
-Feel free to open an issue if you have found no solution to your problem anywhere. 
+Feel free to open an issue if you have found no solution to your problem anywhere else. 
