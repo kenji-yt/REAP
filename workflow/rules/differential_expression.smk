@@ -1,15 +1,28 @@
+rule get_counts_1:
+    output:
+        gene_count1=f"{OUTPUT_DIR}/edgeR/{{sample}}/{{sample}}_subgenome_1.input_edgeR"
+    input:
+        count_table1=f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_1.featureCounts",
+    shell:
+        'cat {input.count_table1} | awk "{if (NR>2) {print{$1 "\t" $7}}" > {output.gene_count1}'
+
+rule get_counts_2:
+    output:
+        gene_count2=f"{OUTPUT_DIR}/edgeR/{{sample}}/{{sample}}_subgenome_2.input_edgeR"
+    input:
+        count_table2=f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_2.featureCounts",
+    shell:
+        'cat {input.count_table2} | awk "{if (NR>2) {print{$1 "\t" $7}}" > {output.gene_count2}'
+
+
 
 rule edgeR:
     output:
-        # see STAR manual for additional output files
-        aln=f"{OUTPUT_DIR}/star/{{sample}}/1_pe_aligned.bam",
-        log=f"{OUTPUT_DIR}/star/{{sample}}/1_Log.out",
-        sj=f"{OUTPUT_DIR}/star/{{sample}}/1_SJ.out.tab",
     log:
-        "logs/pe/{sample}.log",
+        "logs/edgeR/edgeR.log",
     params:
         metadata=f"{METADATA}",
-        count_dir=f"{OUTPUT_DIR}/featureCounts/"
+        count_dir=f"{OUTPUT_DIR}/featureCounts"
         min_count=f"{MIN_COUNT}"
 
     threads: workflow.cores
