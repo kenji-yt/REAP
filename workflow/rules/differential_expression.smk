@@ -28,11 +28,10 @@ rule edgeR:
         "logs/edgeR/edgeR.log",
     params:
         metadata=f"{METADATA}",
-        count_dir=f"{OUTPUT_DIR}/featureCounts"
-        min_count=f"{MIN_COUNT}"
+        count_dir=f"{OUTPUT_DIR}/featureCounts",
+        min_count=f"{MIN_COUNT}",
 
     threads: workflow.cores
     shell:
         "Rscript workflow/scripts/edgeR.R {params.metadata} {params.count_dir} {params.min_count} {input.out_dir}"
         
-
