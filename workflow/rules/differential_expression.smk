@@ -24,13 +24,15 @@ rule edgeR:
         sub_1=f"{OUTPUT_DIR}/edgeR/subgenome_1",
         sub_2=f"{OUTPUT_DIR}/edgeR/subgenome_2",
     input:
-        out_dir=f"{OUTPUT_DIR}/edgeR"
+        gene_count1=f"{OUTPUT_DIR}/edgeR/{{sample}}/{{sample}}_subgenome_1.input_edgeR"
+        gene_count2=f"{OUTPUT_DIR}/edgeR/{{sample}}/{{sample}}_subgenome_2.input_edgeR"
     log:
         "logs/edgeR/edgeR.log",
     params:
         count_dir=f"{OUTPUT_DIR}/featureCounts",
+        out_dir=f"{OUTPUT_DIR}/edgeR",
 
     threads: workflow.cores
     shell:
-        "Rscript workflow/scripts/edgeR.R {config[METADATA]} {params.count_dir} {config[MIN_COUNT]} {input.out_dir}"
+        "Rscript workflow/scripts/edgeR.R {config[METADATA]} {params.count_dir} {config[MIN_COUNT]} {params.out_dir}"
         
