@@ -20,7 +20,9 @@ rule get_counts_2:
 
 
 rule edgeR:
-    output:
+    output: 
+        
+    input:
         out_dir=f"{OUTPUT_DIR}/edgeR"
     log:
         "logs/edgeR/edgeR.log",
@@ -31,6 +33,6 @@ rule edgeR:
 
     threads: workflow.cores
     shell:
-        "Rscript workflow/scripts/edgeR.R {params.metadata} {params.count_dir} {params.min_count} {output.out_dir}"
+        "Rscript workflow/scripts/edgeR.R {params.metadata} {params.count_dir} {params.min_count} {input.out_dir}"
         
 
