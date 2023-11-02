@@ -2,7 +2,7 @@ rule edgeR:
     input:
         count_dir=f"{OUTPUT_DIR}/featureCounts",
     output: 
-        results=f"{OUTPUT_DIR}/edgeR/subgenome_{{one_or_two}}/{{outfile}}",
+        in_data=f"{OUTPUT_DIR}/edgeR/{{sample}}/{{sample}}_subgenome_{{one_or_two}}.input_edgeR",
     log:
         "logs/edgeR/edgeR.log",
     params:
