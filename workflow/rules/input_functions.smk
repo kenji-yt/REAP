@@ -39,7 +39,7 @@ def multiqc_input(wildcards):
     if config["RUN_EDGER"]:
         input.extend(
             expand(
-                f"{OUTPUT_DIR}/edgeR/subgenome_{{one_or_two}}", # /{{outfile}}",
+                f"{OUTPUT_DIR}/edgeR/{{sample}}/subgenome_{{one_or_two}}", # /{{outfile}}",
                 sample=samples.name.values.tolist(),
                 one_or_two=["1", "2"],
                 #outfile=["results_table.txt","MDS_1.png","MDS_2.png","fc_cpm.png"],
