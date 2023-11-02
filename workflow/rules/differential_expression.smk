@@ -22,6 +22,7 @@ rule get_counts_2:
 rule edgeR:
     input:
         gene_count1=f"{OUTPUT_DIR}/edgeR/{{sample}}/{{sample}}_subgenome_1.input_edgeR",
+        gene_count2=f"{OUTPUT_DIR}/edgeR/{{sample}}/{{sample}}_subgenome_2.input_edgeR",
     output: 
         sub_1=f"{OUTPUT_DIR}/edgeR/subgenome_1",
     log:

@@ -15,7 +15,7 @@ comm_args <- commandArgs(trailingOnly = TRUE)
 
 # First argument: read count filenames
 metadata <- read.table(comm_args[1],header=T)
-# Second argument: read count file directory 
+# Second argument: edgeR output directory 
 count_dir <- comm_args[2]
 # Third argument: minimum count per million base pair
 min_cpm <- as.numeric(comm_args[3])
