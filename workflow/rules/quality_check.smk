@@ -78,4 +78,4 @@ rule multiqc_dir:
     log:
         "logs/multiqc.log",
     wrapper:
-        "v2.3.0/bio/multiqc"
+        "v2.9.1/bio/multiqc"
