@@ -118,7 +118,7 @@ sub_genome_2 <- estimateGLMTrendedDisp(sub_genome_2,design.mat2)
 # Compare expression between groups for subgenome 1 
 fit1 <- glmFit(sub_genome_1 , design.mat1)
 lrt1 <- glmLRT(fit1, contrast=c(1,-1))
-write.table(lrt1$table,paste0(out_1,"/results_table.txt"))
+write.table(lrt1$table,paste0(out_1,"/result_table.txt"))
 de1 <- decideTestsDGE(lrt1, adjust.method="BH", p.value = 0.05)
 de1tags1 <- rownames(sub_genome_1)[as.logical(de1)]
 FC_CPM_1 <- paste0(out_1,"/fc_cpm.png")
