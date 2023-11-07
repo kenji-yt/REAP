@@ -46,8 +46,6 @@ def multiqc_input(wildcards):
         )
 
     return input
-
-
 # Special parameters for Feature Count
 # def feature_count_params(wildcards):
 #    input = []

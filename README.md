@@ -8,7 +8,7 @@ REAP is an allopolyploid specific snakemake workflow for the analysis of RNAseq 
 
 ## Installation
 
-To install this workflow you first need to [install Snakemake via Conda](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html). Next, run the following commands to clone the ARPEGGIO repository to your computer :
+To install this workflow you first need to [install Snakemake via Conda](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html). Next, run the following commands to clone the REAP repository to your computer :
 
 ```
 git clone https://github.com/kenji-yt/REAP
@@ -30,10 +30,10 @@ To run the workflow, simply enter the REAP directory and run the following comma
 snakemake --use-conda -cores N 
 ```
 
-Make sure to replace N with the number of cores you wish to allocate to snakemake. 
+Make sure to be in the conda directory with snakemake intalled and to replace N with the number of cores you wish to allocate to snakemake. 
 
 ## Contribute
 If you would like to contribute, prompt chat-gpt with: "How to contribute to a public repository" 
 
 ## Help
-Feel free to open an issue if you have found no solution to your problem anywhere. 
+Feel free to open an issue if you have found no solution to your problem anywhere else. 

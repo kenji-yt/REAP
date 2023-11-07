@@ -41,6 +41,10 @@ rule qualimap_1:
     # resource restrictions (https://snakemake.readthedocs.io/en/latest/snakefiles/rules.html#resources)
     # and which can be used to request RAM during cluster job submission as `{resources.mem_mb}`:
     # https://snakemake.readthedocs.io/en/latest/executing/cluster.html#job-properties
+    params:
+        extra=f"-nt {workflow.cores}",
+    resources:
+        mem_gb=4,
     wrapper:
         "v2.3.2/bio/qualimap/bamqc"
 
@@ -57,6 +61,10 @@ rule qualimap_2:
     # resource restrictions (https://snakemake.readthedocs.io/en/latest/snakefiles/rules.html#resources)
     # and which can be used to request RAM during cluster job submission as `{resources.mem_mb}`:
     # https://snakemake.readthedocs.io/en/latest/executing/cluster.html#job-properties
+    params:
+        extra=f"-nt {workflow.cores}",
+    resources:
+        mem_gb=4,
     wrapper:
         "v2.3.2/bio/qualimap/bamqc"
 
@@ -70,11 +78,13 @@ rule qualimap_2:
 
 rule multiqc_dir:
     input:
-        multiqc_input,
+        input_files=multiqc_input,
     output:
         out=f"{OUTPUT_DIR}/MultiQC/multiqc_report.html",
     params:
-        extra="",  # Optional: extra parameters for multiqc.
+        extra="",  # Optional: extra parameters for multiqc. 
+        input_dir=multiqc_params,
+        multiqcdir=lambda w, output: os.path.split(output.out)[0],
     log:
         "logs/multiqc.log",
     wrapper:
