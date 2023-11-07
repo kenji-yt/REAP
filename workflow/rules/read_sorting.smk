@@ -140,7 +140,7 @@ rule read_sorting_pe:
         o1=f"{OUTPUT_DIR}/read_sorting/{{sample}}/{{sample}}_classified1.ref.bam",
         o2=f"{OUTPUT_DIR}/read_sorting/{{sample}}/{{sample}}_classified2.ref.bam",
     log:
-        f"logs/read_sorting_{{sample}}_PE.log",
+        f"logs/edge_rc/read_sorting_{{sample}}_PE.log",
     conda:
         ENV_PATH
     params:
