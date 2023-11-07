@@ -36,17 +36,16 @@ def multiqc_input(wildcards):
                 suffix=[".featureCounts", ".featureCounts.summary"],
             )
         )
+    if config["RUN_EDGER"]:
+        input.extend(
+            expand(
+                f"{OUTPUT_DIR}/edgeR/subgenome_{{one_or_two}}/{{outfile}}",
+                one_or_two=["1", "2"],
+                outfile=["result_table.txt","MDS.png","fc_cpm.png"],
+            )
+        )
 
     return input
-
-
-def multiqc_params(wildcards):
-    param = []
-    if config["RUN_FASTQC"]:
-        param.append(f"{OUTPUT_DIR}/fastqc")
-    if config["RUN_STAR"]:
-        param.append(f"{OUTPUT_DIR}/qualimap")
-    return param
 # Special parameters for Feature Count
 # def feature_count_params(wildcards):
 #    input = []

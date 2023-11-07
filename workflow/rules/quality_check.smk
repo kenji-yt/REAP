@@ -87,7 +87,5 @@ rule multiqc_dir:
         multiqcdir=lambda w, output: os.path.split(output.out)[0],
     log:
         "logs/multiqc.log",
-    conda:
-        "../../envs/multi_qc.yaml"
-    shell:
-        "multiqc {params.input_dir} -f -o {params.multiqcdir} &> {log}"
+    wrapper:
+        "v2.9.1/bio/multiqc"
