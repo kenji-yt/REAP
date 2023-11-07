@@ -110,6 +110,10 @@ design.mat2 <- model.matrix(~ 0 + sub_genome_2$samples$group)
 colnames(design.mat2) <- levels(sub_genome_2$samples$group)
 sub_genome_2 <- estimateGLMCommonDisp(sub_genome_2,design.mat2)
 sub_genome_2 <- estimateGLMTrendedDisp(sub_genome_2,design.mat2)
+plotBCV(sub_genome_2)
+############################################
+#### check estimateDisp ####
+########################################
 
 #------------------#
 #   DEG analysis   # 
@@ -120,6 +124,9 @@ fit1 <- glmFit(sub_genome_1 , design.mat1)
 lrt1 <- glmLRT(fit1, contrast=c(1,-1))
 write.table(lrt1$table,paste0(out_1,"/result_table.txt"))
 de1 <- decideTestsDGE(lrt1, adjust.method="BH", p.value = 0.05)
+########################################
+#### Output this de1 and/or Qvalue ->> fdr() ####
+########################################
 de1tags1 <- rownames(sub_genome_1)[as.logical(de1)]
 FC_CPM_1 <- paste0(out_1,"/fc_cpm.png")
 png(FC_CPM_1)
