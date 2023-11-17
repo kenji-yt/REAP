@@ -83,6 +83,7 @@ rule multiqc_dir:
         out=f"{OUTPUT_DIR}/MultiQC/multiqc_report.html",
     params:
         extra="",  # Optional: extra parameters for multiqc. 
+        multiqcdir=lambda w, output: os.path.split(output.out)[0],
     log:
         "logs/multiqc.log",
     wrapper:

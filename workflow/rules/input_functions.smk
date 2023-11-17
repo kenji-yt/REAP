@@ -46,6 +46,19 @@ def multiqc_input(wildcards):
         )
 
     return input
+
+
+def edgeR_input(wildcards):
+    input = []
+    input.extend(
+        expand(
+            f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_{{one_or_two}}{{suffix}}",
+            sample=samples.name.values.tolist(),
+            one_or_two=["1", "2"],
+            suffix=[".featureCounts", ".featureCounts.summary"],
+        )
+    )
+    return input
 # Special parameters for Feature Count
 # def feature_count_params(wildcards):
 #    input = []

@@ -33,8 +33,8 @@ GENOME_DIR_1 = os.path.normpath(config["GENOME_DIR_1"])
 GENOME_DIR_2 = os.path.normpath(config["GENOME_DIR_2"])
 GENOME_PARENT_1 = os.path.splitext(config["GENOME_PARENT_1"])[0]
 GENOME_PARENT_2 = os.path.splitext(config["GENOME_PARENT_2"])[0]
-ANNOTATION_PARENT_1 = os.path.splitext(config["ANNOTATION_PARENT_1"])[0]
-ANNOTATION_PARENT_2 = os.path.splitext(config["ANNOTATION_PARENT_2"])[0]
+ANNOTATION_PARENT_1 = config["ANNOTATION_PARENT_1"]
+ANNOTATION_PARENT_2 = config["ANNOTATION_PARENT_2"]
 MIN_COUNT = config["MIN_COUNT"]
 
 

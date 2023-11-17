@@ -24,6 +24,7 @@ RUN_FASTQC: True
 RUN_STAR: True
 RUN_EAGLE: True
 RUN_FEATURECOUNTS: True
+RUN_EDGER: True
 
 
 ###############################################################################
