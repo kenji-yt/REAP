@@ -1,6 +1,5 @@
 rule edgeR:
     input:
-        count_dir=f"{OUTPUT_DIR}/featureCounts",
         feature_counts_output=edgeR_input,
     output:
         mds_1=f"{OUTPUT_DIR}/edgeR/subgenome_1/MDS.png",
@@ -12,6 +11,9 @@ rule edgeR:
     log:
         "logs/edgeR/edgeR.log",
     params:
+        count_dir=lambda w, input: os.path.split(
+            os.path.split(input.feature_counts_output[0])[0]
+        )[0],
         out_dir=lambda w, output: os.path.split(os.path.split(output.mds_1)[0])[0],
         metadata=config["METADATA"],
         min_count=MIN_COUNT,
@@ -19,4 +21,4 @@ rule edgeR:
         "../../envs/edgeR.yaml"
     threads: workflow.cores
     shell:
-        "Rscript workflow/scripts/edgeR.R {params.metadata} {input.count_dir} {params.min_count} {params.out_dir} 2> {log}"
+        "Rscript workflow/scripts/edgeR.R {params.metadata} {params.count_dir} {params.min_count} {params.out_dir} 2> {log}"
