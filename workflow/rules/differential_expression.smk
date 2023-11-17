@@ -17,8 +17,9 @@ rule edgeR:
         out_dir=lambda w, output: os.path.split(os.path.split(output.mds_1)[0])[0],
         metadata=config["METADATA"],
         min_count=MIN_COUNT,
+        scripts=SCRIPTS_DIR,
     conda:
         "../../envs/edgeR.yaml"
     threads: workflow.cores
     shell:
-        "Rscript workflow/scripts/edgeR.R {params.metadata} {params.count_dir} {params.min_count} {params.out_dir} 2> {log}"
+        "Rscript {params.scripts}/edgeR.R {params.metadata} {params.count_dir} {params.min_count} {params.out_dir} 2> {log}"
