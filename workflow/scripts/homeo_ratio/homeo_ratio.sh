@@ -11,10 +11,8 @@
 
 # Default values
 cores=""
-anno_1=""
-anno_2=""
-ref_1=""
-ref_2=""
+annotations=""
+references=""
 outdir=""
 
 
@@ -25,51 +23,62 @@ function print_usage() {
 }
 
 # Parse command line options using getopts 
-while getopts "g:p:c:m:x:t:" flag; do
+while getopts "r:a:c:o:" flag; do
     case "$flag" in
-        g)
-            generation="$OPTARG" ;;
-        p)
-            parent="$OPTARG" ;;
+        r)
+            references+=("$OPTARG");;
+        a)
+            annotations+=("$OPTARG");;
         c)
             cores="$OPTARG" ;;
-        m)
-            min_cov="$OPTARG" ;;
-        x) 
-            context="$OPTARG" ;;
-        t)
-            type="$OPTARG" ;;
+        o)
+            outdir="$OPTARG" ;;
         *) 
             print_usage 
             exit 1 ;;
     
     esac
 done
+#shift $((OPTIND -1))
+#https://stackoverflow.com/questions/7529856/retrieving-multiple-arguments-for-a-single-option-using-getopts-in-bash
 
 
 # Check if required flags are provided
-if test -z "$generation"; then
-    echo "-g flags is required."
+if [ ${#references[@]} -lt 2 ]; then
+    echo "Please provide at least two reference genomes."
     print_usage
     exit 1
 fi
+if [ ${#annotations[@]} -lt 2 ]; then
+    echo "Please provide at least two annotations."
+    print_usage
+    exit 1
+fi 
+if [ ${#annotations[@]} -ne ${#references[@]}  ]; then
+    echo "Please provide the same number of reference and annotations."
+    print_usage
+    exit 1
+    
 if test -z "$cores"; then
     echo "-c flags is required."
     print_usage
     exit 1
 fi
-if test -z "$min_cov"; then
-    echo "-m flags is required."
-    print_usage
-    exit 1
-fi
-if test -z "$type"; then
-    echo "-t flags is required."
+if test -z "$outdir"; then
+    echo "-o flags is required."
     print_usage
     exit 1
 fi
 
-
+n_subgenomes=${#annotations[@]}
+index=$(($n_subgenomes-1))
+# Get each annotation and reference
+for i in $(seq 0 1 $n_subgenomes); do
+    anno_var_name="anno_${i}"
+    ref_var_name="ref_${i}"
+    eval ${anno_var_name} ${annotations[${i}]}
+    eval ${ref_var_name} ${references[${i}]}
+done
 # GET THE LIST OF HOMEOLOGS USING USING RBH
 ###########################################
 

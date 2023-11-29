@@ -11,9 +11,9 @@ rule homeo_ratio:
     log:
         "logs/homeo_ratio/homeo_ratio.log",
     params:
-        out_dir=f"{OUTPUT_DIR}/homeo_ratio",
+        out_dir=f"{OUTPUT_DIR}",
     conda:
         "../../envs/analyses.yaml"
     threads: workflow.cores
     shell:
-        "bash workflow/scripts/homeo_ratio/homeo_ratio.sh -r {input.ref1} -r {input.ref2} -a {input.anno1} -a {input.anno2} -c {threads}"
+        "bash workflow/scripts/homeo_ratio/homeo_ratio.sh -r {input.ref1} -r {input.ref2} -a {input.anno1} -a {input.anno2} -c {threads} -o {params.out_dir}"
