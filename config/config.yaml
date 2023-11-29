@@ -4,6 +4,7 @@
 
 OUTPUT: results/
 METADATA: .test/data/metadata.txt
+SCRIPTS: workflow/scripts/
 
 ###############################################################################
 ###############                     RAW DATA                    ###############

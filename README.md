@@ -33,7 +33,20 @@ snakemake --use-conda -cores N
 Make sure to be in the conda directory with snakemake intalled and to replace N with the number of cores you wish to allocate to snakemake. 
 
 ## Contribute
-If you would like to contribute, prompt chat-gpt with: "How to contribute to a public repository" 
+Any contribution is welcome, be it issues or pull requests (PRs). For PRs make sure your code changes pass all the necessary tests by running the following commands to check for breaking changes and make sure you're following best practices:
+
+1) Install [`snakefmt`](https://github.com/snakemake/snakefmt) and run:
+
+```
+snakefmt workflow/Snakefile workflow/rules/*
+```
+
+2) Run the snakemake linter:
+
+```
+snakemake --lint
+```
+
 
 ## Help
 Feel free to open an issue if you have found no solution to your problem anywhere else. 
