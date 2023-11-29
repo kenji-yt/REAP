@@ -15,12 +15,9 @@ comm_args <- commandArgs(trailingOnly = TRUE)
 
 # First argument: read count filenames
 metadata <- read.table(comm_args[1],header=T)
-# Second argument: edgeR output directory 
-count_dir <- comm_args[2]
-# Third argument: minimum count per million base pair
-min_cpm <- as.numeric(comm_args[3])
+
 # Output directory
-out_dir <- comm_args[4]
+out_dir <- comm_args[2]
 dir.create(out_dir)
 dir.create(paste0(out_dir,"/subgenome_1"))
 out_1 <- paste0(out_dir,"/subgenome_1")
