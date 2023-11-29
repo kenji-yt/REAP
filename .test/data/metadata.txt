@@ -1,2 +1,5 @@
-name    group
-test_pe A
+name	group
+test1	A
+test2	A
+test3	B
+test4	B

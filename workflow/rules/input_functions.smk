@@ -41,10 +41,23 @@ def multiqc_input(wildcards):
             expand(
                 f"{OUTPUT_DIR}/edgeR/subgenome_{{one_or_two}}/{{outfile}}",
                 one_or_two=["1", "2"],
-                outfile=["result_table.txt","MDS.png","fc_cpm.png"],
+                outfile=["result_table.txt", "MDS.png", "fc_cpm.png"],
             )
         )
 
+    return input
+
+
+def edgeR_input(wildcards):
+    input = []
+    input.extend(
+        expand(
+            f"{OUTPUT_DIR}/featureCounts/{{sample}}/{{sample}}_subgenome_{{one_or_two}}{{suffix}}",
+            sample=samples.name.values.tolist(),
+            one_or_two=["1", "2"],
+            suffix=[".featureCounts", ".featureCounts.summary"],
+        )
+    )
     return input
 # Special parameters for Feature Count
 # def feature_count_params(wildcards):

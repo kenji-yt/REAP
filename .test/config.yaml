@@ -4,6 +4,7 @@
 
 OUTPUT: results/
 METADATA: data/metadata.txt
+SCRIPTS: ../workflow/scripts/
 
 ###############################################################################
 ###############                     RAW DATA                    ###############
@@ -24,6 +25,7 @@ RUN_FASTQC: True
 RUN_STAR: True
 RUN_EAGLE: True
 RUN_FEATURECOUNTS: True
+RUN_EDGER: True
 
 
 ###############################################################################
@@ -46,3 +48,17 @@ GENOME_PARENT_2: g2.fa
 # Path to annotation files
 ANNOTATION_PARENT_1: data/genome1/anno1.gtf
 ANNOTATION_PARENT_2: data/genome2/anno2.gtf
+
+###############################################################################
+###############                    FEATURE COUNT                ###############
+###############################################################################
+
+# Desired parameters
+FC_PARAMS: ""
+
+###############################################################################
+##############                        edgeR                      ##############
+###############################################################################
+
+# Minimum count 
+MIN_COUNT: 100
