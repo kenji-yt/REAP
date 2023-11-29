@@ -7,3 +7,4 @@ dependencies:
   - bioconductor-edger
   - r-locfit
   - r-doMC
+  - bedtools

@@ -1,20 +1,19 @@
 rule homeo_ratio:
     input:
         count_dir=f"{OUTPUT_DIR}/featureCounts",
+        anno1=f"{ANNOTATION_PARENT_1}",
+        ref1=f"{GENOME_DIR_1}/{GENOME_PARENT_1}.fa",
+        anno2=f"{ANNOTATION_PARENT_2}",
+        ref2=f"{GENOME_DIR_2}/{GENOME_PARENT_2}.fa",
+        
     output: 
-        mds_1=f"{OUTPUT_DIR}/edgeR/subgenome_1/MDS.png",
-        fc_cpm_1=f"{OUTPUT_DIR}/edgeR/subgenome_1/fc_cpm.png",
-        res_1=f"{OUTPUT_DIR}/edgeR/subgenome_1/result_table.txt",
-        mds_2=f"{OUTPUT_DIR}/edgeR/subgenome_2/MDS.png",
-        fc_cpm_2=f"{OUTPUT_DIR}/edgeR/subgenome_2/fc_cpm.png",
-        res_2=f"{OUTPUT_DIR}/edgeR/subgenome_2/result_table.txt",
+        
     log:
         "logs/homeo_ratio/homeo_ratio.log",
     params:
         out_dir=f"{OUTPUT_DIR}/homeo_ratio",
     conda:
-        "../../envs/homeo_ratio.yaml"
+        "../../envs/analyses.yaml"
     threads: workflow.cores
     shell:
-        "Rscript workflow/scripts/edgeR.R {config[METADATA]} {input.count_dir} {config[MIN_COUNT]} {params.out_dir}"
-        
+        "bash workflow/scripts/homeo_ratio/homeo_ratio.sh -r {input.ref1} -r {input.ref2} -a {input.anno1} -a {input.anno2} -c {threads}"
