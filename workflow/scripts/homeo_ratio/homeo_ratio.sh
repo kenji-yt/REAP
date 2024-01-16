@@ -74,12 +74,17 @@ n_subgenomes=${#annotations[@]}
 index=$(($n_subgenomes-1))
 # Get each annotation and reference
 for i in $(seq 0 1 $n_subgenomes); do
-    anno_var_name="anno_${i}"
+    # name the variables
+    anno_var_name="anno_${i}" 
     ref_var_name="ref_${i}"
+    # assign values to variables
     eval ${anno_var_name} ${annotations[${i}]}
     eval ${ref_var_name} ${references[${i}]}
 done
-# GET THE LIST OF HOMEOLOGS USING USING RBH
-###########################################
+
+
+#############################################
+# GET THE LIST OF HOMEOLOGS USING USING RBH #
+#############################################
 
 bash workflow/scripts/rbh.sh 

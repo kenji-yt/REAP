@@ -8,6 +8,22 @@
 # $3 desired output file listing all RBH (inferred homologues). Don't include suffix. 
 # $4 number of threads per process 
 
+###########################################
+###### IN CASE OF KEYBOARD INTERUPT #######
+########################################### 
+
+# Function to delete tmp files after premature interuption
+delete_file() {
+    if [[ $(ls -A | grep -E ".temp*") ]]; then
+        rm -r ".temp*"
+        echo "Keyboard interupt. Deleting temporary workspace." | tee -a log.txt 
+        echo "Temporary workspace deleted successfully." | tee -a log.txt
+        exit 1
+    fi
+}
+# Trap the script interruption (SIGINT) and execute the delete_file function
+trap delete_file INT
+
 ###########
 ### Run ###
 ###########
