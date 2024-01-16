@@ -2,7 +2,6 @@
 #### Homeolog ratio test ####
 #############################
 
-
 #----------------------------------------------#
 #----------------------------------------------#
 #---------------- Parse the flags -------------#
@@ -73,7 +72,7 @@ fi
 n_subgenomes=${#annotations[@]}
 index=$(($n_subgenomes-1))
 # Get each annotation and reference
-for i in $(seq 0 1 $n_subgenomes); do
+for i in $(seq 0 1 $index); do
     # name the variables
     anno_var_name="anno_${i}" 
     ref_var_name="ref_${i}"
@@ -87,6 +86,13 @@ done
 # GET THE LIST OF HOMEOLOGS USING USING RBH #
 #############################################
 
-bash workflow/scripts/extract_gene.sh
+# Get each annotation and reference
+for i in $(seq 0 1 $index); do 
+    bash workflow/scripts/extract_gene.sh ${references[${i}]} ${annotations[${i}]} $outdir/genome_$(($i+1)).bed $outdir/genome_$(($i+1)).fa
+done
 
-bash workflow/scripts/rbh.sh 
+for i in $(seq 1 1 $index); do ##### CHECK THOSE INDEXES ######
+    for j in $(seq $(($i+1)) 1 $n_subgenomes); do
+        bash workflow/scripts/rbh.sh $outdir/genome_${i}.fa $outdir/genome_${j}.fa $outdir $cores 
+    done
+done 

@@ -28,9 +28,6 @@ trap delete_file INT
 ### Run ###
 ###########
 
-# Make output directory
-mkdir $3
-
 # Make hidden directories for the databases
 mkdir $3/.temp_db1
 mkdir $3/.temp_db2
