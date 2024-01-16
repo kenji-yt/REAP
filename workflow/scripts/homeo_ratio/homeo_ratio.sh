@@ -87,4 +87,6 @@ done
 # GET THE LIST OF HOMEOLOGS USING USING RBH #
 #############################################
 
+bash workflow/scripts/extract_gene.sh
+
 bash workflow/scripts/rbh.sh 
