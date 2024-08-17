@@ -27,7 +27,7 @@ In the config file you can specify where the output should be written, where met
 To run the workflow, simply enter the REAP directory and run the following commands:
 
 ```
-snakemake --use-conda -cores N 
+snakemake --use-conda --cores N 
 ```
 
 Make sure to be in the conda directory with snakemake intalled and to replace N with the number of cores you wish to allocate to snakemake. 
