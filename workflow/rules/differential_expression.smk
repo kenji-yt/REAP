@@ -19,7 +19,7 @@ rule edgeR:
         min_count=MIN_COUNT,
         scripts=SCRIPTS_DIR,
     conda:
-        "../../envs/edgeR.yaml"
+        "../../envs/analyses.yaml"
     threads: workflow.cores
     shell:
         "Rscript {params.scripts}/edgeR.R {params.metadata} {params.count_dir} {params.min_count} {params.out_dir} 2> {log}"
